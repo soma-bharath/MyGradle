@@ -20,7 +20,7 @@ repositories {
             password = project.property('artifactory_password')
         }
 }
-
+}
 dependencies {
     // Add your project dependencies here
 }
