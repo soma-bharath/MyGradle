@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // Add your project dependencies here
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId = 'com.example'
+            artifactId = 'my-gradle-application'
+            version = project.version
+
+            // Set additional publication metadata if needed
+            // For example:
+            // pom.withXml {
+            //     asNode().appendNode('description', 'My Gradle Application')
+            // }
+        }
+    }
+    repositories {
+        maven {
+            name = 'Artifactory'
+            url = uri(project.property('artifactory_url'))
+
+            credentials {
+                username = project.property('artifactory_user')
+                password = project.property('artifactory_password')
+            }
+        }
+    }
+}
