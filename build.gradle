@@ -9,6 +9,16 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenLocal()
     mavenCentral()
+    maven {
+        name = 'Artifactory'
+        // Use HTTP URL instead of HTTPS for insecure protocol
+        url = uri(project.property('artifactory_url'))
+        allowInsecureProtocol = true
+
+        credentials {
+            username = project.property('artifactory_user')
+            password = project.property('artifactory_password')
+        }
 }
 
 dependencies {
