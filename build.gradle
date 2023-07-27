@@ -45,7 +45,7 @@ publishing {
         maven {
             name = 'Artifactory'
             url = uri(project.property('artifactory_url'))
-
+            allowInsecureProtocol = true
             credentials {
                 username = project.property('artifactory_user')
                 password = project.property('artifactory_password')
